@@ -4,16 +4,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:app="clr-namespace:GrandmaMobileApp"
+    xmlns:ess="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
     x:DataType="app:MainPage"
     BindingContext="{Binding ., Source={RelativeSource Mode=Self}}">
-    <StackLayout BackgroundColor="Blue">
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            Text="Test!"
-            VerticalOptions="CenterAndExpand" />
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            Text="{Binding Test}"
-            VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout BindableLayout.ItemsSource="{Binding Contacts}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="ess:Contact">
+                        <Label Text="{Binding DisplayName}" />
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
