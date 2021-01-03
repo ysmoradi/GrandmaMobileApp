@@ -4,18 +4,50 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:app="clr-namespace:GrandmaMobileApp"
-    xmlns:ess="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
+    x:Name="This"
     x:DataType="app:MainPage"
-    BindingContext="{Binding ., Source={RelativeSource Mode=Self}}">
-    <ScrollView>
-        <StackLayout BindableLayout.ItemsSource="{Binding Contacts}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout x:DataType="ess:Contact">
-                        <Label Text="{Binding DisplayName}" />
+    BindingContext="{Binding ., Source={RelativeSource Mode=Self}}"
+    FlowDirection="RightToLeft">
+    <NavigationPage.TitleView>
+        <Grid Padding="25,0" FlowDirection="RightToLeft">
+            <Label
+                FontSize="Large"
+                Text="تماس‌های ملکه"
+                TextColor="White" />
+        </Grid>
+    </NavigationPage.TitleView>
+    <CarouselView ItemsSource="{Binding ContactPeople}">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Padding="5" x:DataType="app:ContactPerson">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="256"
+                        Source="{Binding ImageUri}" />
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding DisplayName}"
+                        VerticalOptions="Center" />
+                    <StackLayout BindableLayout.ItemsSource="{Binding Numbers}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout x:DataType="app:ContactNumber" Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="40"
+                                        Text="{Binding Type}" />
+                                    <Button
+                                        Command="{Binding CallNumberCommand, Source={x:Reference This}}"
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding Number, StringFormat='تماس با {0}'}" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
                     </StackLayout>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </StackLayout>
-    </ScrollView>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
 </ContentPage>
