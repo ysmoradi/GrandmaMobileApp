@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-
-namespace GrandmaMobileApp
+﻿namespace GrandmaMobileApp
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage 
     {
         public MainPage()
         {
             InitializeComponent();
         }
+
+        public string Test { get; set; } = "Test";
     }
 }
