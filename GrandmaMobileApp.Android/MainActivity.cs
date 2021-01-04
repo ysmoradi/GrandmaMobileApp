@@ -35,7 +35,7 @@ namespace GrandmaMobileApp.Droid
                 StartActivity(intent);
             };
 
-            SimpleInjections.MakeWhatsAppVideoCall = number =>
+            SimpleInjections.OpenWhatsAppContact = number =>
             {
                 Intent intent = new Intent(Intent.ActionView);
                 var url = "https://api.whatsapp.com/send?phone=" + number + "&text=" + URLEncoder.Encode("سلام!", "UTF-8");

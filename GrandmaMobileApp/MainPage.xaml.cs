@@ -24,7 +24,7 @@ namespace GrandmaMobileApp
             {
                 if (contactNumber.Type == "📷")
                 {
-                    SimpleInjections.MakeWhatsAppVideoCall(contactNumber.Number);
+                    SimpleInjections.OpenWhatsAppContact(contactNumber.Number);
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace GrandmaMobileApp
 
         public static Action<string> CallNumber;
 
-        public static Action<string> MakeWhatsAppVideoCall;
+        public static Action<string> OpenWhatsAppContact;
 
         public static Action<string> PlayVoice;
     }
