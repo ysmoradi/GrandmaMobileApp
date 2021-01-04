@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -10,6 +11,10 @@ namespace GrandmaMobileApp
         public List<ContactPerson> ContactPeople { get; set; } = new List<ContactPerson>();
 
         public Command<ContactNumber> CallNumberCommand { get; set; }
+
+        public Command<ContactPerson> PlayDisplayNameCommand { get; set; }
+
+        public string ConnectivityStatus { get; set; } = "؟";
 
         public MainPage()
         {
@@ -28,6 +33,11 @@ namespace GrandmaMobileApp
                     SimpleInjections.CallNumber(contactNumber.Number);
                 }
             });
+
+            PlayDisplayNameCommand = new Command<ContactPerson>(async contact =>
+            {
+                SimpleInjections.PlayVoice($"http://api.farsireader.com/ArianaCloudService/ReadTextGET?APIKey=$JPK7Q2IRVPJHWKQ5A&Text={contact.DisplayName}&Speaker=Female1&Format=mp3");
+            });
         }
 
         protected async override void OnAppearing()
@@ -37,6 +47,24 @@ namespace GrandmaMobileApp
             await Permissions.RequestAsync<Permissions.ContactsRead>();
 
             ContactPeople = SimpleInjections.GetContactPeople();
+
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                HttpResponseMessage response = await client.GetAsync("https://google.com/");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await response.Content.ReadAsStreamAsync();
+
+                    ConnectivityStatus = "😊";
+                }
+            }
+            catch
+            {
+                ConnectivityStatus = "😕";
+            }
         }
     }
 
@@ -67,5 +95,7 @@ namespace GrandmaMobileApp
         public static Action<string> CallNumber;
 
         public static Action<string> MakeWhatsAppVideoCall;
+
+        public static Action<string> PlayVoice;
     }
 }

@@ -1,26 +1,33 @@
 ﻿using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.OS;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms;
-using Android.Provider;
-using Android.Database;
-using System.Collections.Generic;
-using static Android.Provider.ContactsContract.CommonDataKinds;
-using System.Linq;
 using Android.Content;
+using Android.Content.PM;
+using Android.Database;
+using Android.Media;
 using Android.Net;
+using Android.OS;
+using Android.Provider;
+using Android.Runtime;
 using Java.Net;
+using System.Collections.Generic;
+using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using static Android.Provider.ContactsContract.CommonDataKinds;
 
 namespace GrandmaMobileApp.Droid
 {
-    [Activity(Label = "تماس‌های ملکه", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "ملکه", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            SimpleInjections.PlayVoice = url =>
+            {
+                MediaPlayer player = MediaPlayer.Create(this, Uri.Parse(url));
+                player.Start();
+            };
 
             SimpleInjections.CallNumber = number =>
             {
@@ -57,6 +64,8 @@ namespace GrandmaMobileApp.Droid
                     null,
                     ContactsContract.Contacts.InterfaceConsts.DisplayName
                 );
+
+                int count = 0;
 
                 if (contactDetailCursor.MoveToFirst())
                 {
@@ -115,6 +124,12 @@ namespace GrandmaMobileApp.Droid
                         }
 
                         result.Add(contact);
+
+                        count++;
+#if DEBUG
+                        if (count > 19)
+                            break;
+#endif
 
                     } while (contactDetailCursor.MoveToNext());
                 };
