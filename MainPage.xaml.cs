@@ -39,6 +39,7 @@ public partial class MainPage
                 await Permissions.RequestAsync<Permissions.Phone>();
 
                 Intent intent = new(Intent.ActionCall, Android.Net.Uri.Parse($"tel:{contactNumber.Number}"));
+                intent.AddFlags(ActivityFlags.NewTask);
                 MauiApplication.Current.StartActivity(intent);
             }
         });
