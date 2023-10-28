@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="GrandmaMobileApp.MainPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:app="clr-namespace:GrandmaMobileApp"
     x:Name="This"
@@ -9,14 +9,21 @@
     BackgroundColor="#E7F5FA"
     BindingContext="{Binding ., Source={RelativeSource Mode=Self}}"
     FlowDirection="RightToLeft">
+
     <StackLayout>
 
         <Label
             Padding="5"
             BackgroundColor="BlueViolet"
             FontSize="50"
-            Text="{Binding ConnectivityStatus, StringFormat='ملکه {0}'}"
-            TextColor="White" />
+            TextColor="White">
+            <Label.Text>
+                <MultiBinding StringFormat="ملکه {0} تعداد {1}">
+                    <Binding Path="ConnectivityStatus" />
+                    <Binding Path="ContactPeople.Count" />
+                </MultiBinding>
+            </Label.Text>
+        </Label>
 
         <CarouselView ItemsSource="{Binding ContactPeople}">
             <CarouselView.ItemTemplate>
@@ -30,6 +37,7 @@
                             FontSize="Large"
                             HorizontalOptions="Center"
                             Text="{Binding DisplayName}"
+                            TextColor="Black"
                             VerticalOptions="Center" />
                         <Button
                             Command="{Binding PlayDisplayNameCommand, Source={x:Reference This}}"
@@ -47,6 +55,7 @@
                                         </StackLayout.GestureRecognizers>
                                         <Label
                                             BackgroundColor="White"
+                                            TextColor="Black"
                                             FontSize="50"
                                             Text="{Binding Type}"
                                             VerticalTextAlignment="Center" />
@@ -65,4 +74,5 @@
             </CarouselView.ItemTemplate>
         </CarouselView>
     </StackLayout>
+
 </ContentPage>

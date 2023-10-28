@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30803.129
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34219.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrandmaMobileApp.Android", "GrandmaMobileApp.Android\GrandmaMobileApp.Android.csproj", "{7A3EB800-D053-4EBF-B8BA-8672C79239F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrandmaMobileApp", "GrandmaMobileApp\GrandmaMobileApp.csproj", "{F3C934BB-5139-4561-8E54-2170B1AF9A6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrandmaMobileApp", "GrandmaMobileApp.csproj", "{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,21 +11,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A3EB800-D053-4EBF-B8BA-8672C79239F9}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{F3C934BB-5139-4561-8E54-2170B1AF9A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3C934BB-5139-4561-8E54-2170B1AF9A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3C934BB-5139-4561-8E54-2170B1AF9A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3C934BB-5139-4561-8E54-2170B1AF9A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380023A6-CEBB-4F2A-A7D4-0CABF10BD265}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1C9D4F55-37F0-4F4D-9E74-D3F681D073E1}
+		SolutionGuid = {A53BD85A-44BC-47C1-A623-7AD8F2FA4BA3}
 	EndGlobalSection
 EndGlobal
